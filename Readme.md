@@ -11,24 +11,11 @@
 また、**Docker環境での本番デプロイおよび運用テスト**を行い、実運用可能な構成を確立しました。
 
 
-## ⚙️ 使用技術
-| 分類        | 使用技術                          |
-| --------- | ----------------------------- |
-| ユーザアプリフロントエンド   | React, JavaScript, HTML, CSS  |
-| ユーザアプリバックエンド    | Flask (Python) |
-| 管理者アプリ    | Laravel (PHP) |
-| データベース    | MySQL 8.0                     |
-| インフラ / 環境 | Docker, Docker Compose, Nginx |
-| 認証デバイス    | PaSoRi RC-S380 (NFCリーダ)       |
-| 開発補助ツール   | GitHub, VS Code      |
-
-
 ## 🐳 Docker Compose による開発環境構築
  
 本リポジトリでは、**Docker Compose** を用いてローカル開発環境を構築しています。バックエンド（Flask など）、フロントエンド（React）、および MySQL データベースが連携する構成です。
 
 ###  サービス構成
-
 | サービス名     | 説明               | ポート              |
 |----------------|--------------------|---------------------|
 | `nginx`        | リバースプロキシ（外部公開80番） | `localhost:80`  |
@@ -38,6 +25,16 @@
 | `nfc-api`      | NFCリーダAPIサービス  | (外部非公開) |
 | `db`           | MySQL 8.0 データベース | 内部3306番 |
 
+### ⚙️ 使用技術
+| 分類        | 使用技術                          |
+| --------- | ----------------------------- |
+| ユーザアプリフロントエンド   | React, JavaScript, HTML, CSS  |
+| ユーザアプリバックエンド    | Flask (Python) |
+| 管理者アプリ    | Laravel (PHP) |
+| データベース    | MySQL 8.0                     |
+| インフラ / 環境 | Docker, Docker Compose, Nginx |
+| 認証デバイス    | PaSoRi RC-S380 (NFCリーダ)       |
+| 開発補助ツール   | GitHub, VS Code      |
 
 ### DBテーブル構成（ER図）
 ``` mermaid
@@ -111,11 +108,11 @@ erDiagram
 ```
 
 
-### 🧭 セットアップ方法
+## 🧭 セットアップ方法
 **1️⃣ リポジトリのクローン,コンテナの起動**
 ```bash
 git clone https://github.com/u594610j/LabMart_public.git
-cd LabMart_Visitor
+cd LabMart_public
 docker compose up -d
 ```
 **2️⃣ 起動確認**
