@@ -1,10 +1,8 @@
 # LabMart
-## 🔒 本リポジトリは、既存の開発プロジェクトを整理した「公開用バージョン」です。
-
-
 ## 🏷️ 概要
-**LabMart** は、研究室内での備品購入・ポイント管理を効率化するための**Webベース購買管理システム**です。
-管理者は商品の登録・在庫の更新・注文の支払い及びキャンセル管理を行い、ユーザはNFCタグを用いた簡単な認証で購入を記録できます。
+**🔒 本リポジトリは、既存の開発プロジェクトを整理した「公開用バージョン」です。**
+**LabMart** は、研究室内での食品・飲料の在庫管理及び購入管理を効率化するためのWebベース購買管理システムです。
+管理者は商品の登録、在庫の更新、注文の支払い及びキャンセル管理を行い、ユーザはNFCタグを用いた簡単な認証で購入を記録できます。
 
 
 ## 👥 開発メンバー
@@ -41,20 +39,7 @@
 | `db`           | MySQL 8.0 データベース | 内部3306番 |
 
 
-## 🧭 セットアップ方法
-### 1️⃣ リポジトリのクローン,コンテナの起動
-```bash
-git clone https://github.com/u594610j/LabMart_Pub.git
-cd LabMart_Visitor
-docker compose up -d
-```
-### 2️⃣ 起動確認
-ブラウザで以下のURLにアクセスします。
-ユーザ：'http://localhost'
-管理者：'http://localhost/admin'
-
-
-## DBテーブル構成（ER図）
+### DBテーブル構成（ER図）
 ``` mermaid
 erDiagram
     USERS {
@@ -123,4 +108,19 @@ erDiagram
     ORDERS ||--|{ ORDER_DETAILS : 含む
     ITEMS ||--o{ ORDER_DETAILS : 商品情報
     CATEGORIES ||--|{ ITEMS : カテゴリ分類
+```
+
+
+### 🧭 セットアップ方法
+**1️⃣ リポジトリのクローン,コンテナの起動**
+```bash
+git clone https://github.com/u594610j/LabMart_public.git
+cd LabMart_Visitor
+docker compose up -d
+```
+**2️⃣ 起動確認**
+ブラウザで以下のURLにアクセスします。
+```
+ユーザ：'http://localhost'
+管理者：'http://localhost/admin'
 ```
