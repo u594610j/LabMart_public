@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "item_id": 1,
+      "item_name": "コーラ",
+      "item_price": 120,
+      "category_id": 1,
+      "category_name": "飲み物",
+      "stock_quantity": 20
+    },
+    {
+      "item_id": 2,
+      "item_name": "オレンジジュース",
+      "item_price": 150,
+      "category_id": 1,
+      "category_name": "飲み物",
+      "stock_quantity": 15
+    },
+    {
+      "item_id": 3,
+      "item_name": "ポテトチップス",
+      "item_price": 180,
+      "category_id": 2,
+      "category_name": "お菓子",
+      "stock_quantity": 10
+    },
+    {
+      "item_id": 4,
+      "item_name": "チョコレート",
+      "item_price": 200,
+      "category_id": 2,
+      "category_name": "お菓子",
+      "stock_quantity": 25
+    },
+    {
+      "item_id": 5,
+      "item_name": "カップラーメン",
+      "item_price": 250,
+      "category_id": 3,
+      "category_name": "即席食品",
+      "stock_quantity": 8
+    }
+  ]
+}

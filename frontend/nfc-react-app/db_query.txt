@@ -1,0 +1,18 @@
+db_item{
+    item_id,item_name,item_price,category_id,category_name,stock_quantity
+}
+
+最初ScanNfc呼び出し->16進数->GetName
+
+db_auth{
+    id,name
+}
+nameが送られてくれば遷移
+
+db_purchse{
+    user_id, ordered_at, items:[item_id,item_quantity]
+}
+ordered_timeはreactのtimestamp
+注文完了の応答が来たら遷移する
+
+PurchasePageからuser_idを送ってHistoryPageに遷移

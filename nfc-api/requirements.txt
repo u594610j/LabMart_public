@@ -1,0 +1,8 @@
+Flask==2.3.2
+mysql-connector-python==8.3.0
+pytest
+pytest-flask
+werkzeug<3.0 # __version__ attributeがなくなっているため
+nfcpy
+flask-cors==4.0.0
+pyusb==1.2.1

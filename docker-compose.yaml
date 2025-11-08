@@ -1,0 +1,96 @@
+version: '3.8'
+
+services:
+  # proxy-server
+  nginx:
+    image: nginx:1.25.3
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - admin-console
+      - frontend
+      - backend
+      - nfc-api
+    networks:
+      - labmart-net
+
+  # user-app
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    tty: true
+    expose:
+      - "8000"
+    depends_on:
+      - db
+    networks:
+      - labmart-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    tty: true
+    expose:
+      - "3000"
+    networks:
+      - labmart-net
+
+  # admin-app
+  admin-console:
+    build:
+      context: ./admin-console
+      dockerfile: Dockerfile
+    container_name: admin-console
+    expose:
+      - "9000"
+    depends_on:
+      - db
+    networks:
+      - labmart-net
+
+  # NFC-API-server
+  nfc-api: 
+    build:
+      context: ./nfc-api
+      dockerfile: Dockerfile
+    container_name: nfc-api
+    devices:
+      - '/dev/bus/usb:/dev/bus/usb'
+    cap_add:
+      - SYS_RAWIO
+    security_opt:
+      - seccomp=unconfined
+    networks:
+      - labmart-net
+    expose:
+      - "5000"
+
+  # DB 
+  db:
+    image: mysql:8.0
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      TZ: Asia/Tokyo
+    volumes:
+      - db_data_test:/var/lib/mysql
+    networks:
+      - labmart-net
+
+volumes:
+  db_data_test:
+    
+networks:
+  labmart-net:
+    driver: bridge
