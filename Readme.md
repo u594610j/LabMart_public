@@ -124,4 +124,6 @@ docker compose up -d
 ```
 ユーザ：'http://localhost'
 管理者：'http://localhost/admin'
+⚠️管理者ユーザ名：admin
+⚠️管理者パスワード：admin
 ```

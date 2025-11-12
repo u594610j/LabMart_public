@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+# 依存が無ければ最初に解決して artisan を確実に動かせるようにする
+if [ ! -d vendor ] || [ ! -f vendor/autoload.php ]; then
+  echo "Running composer install (dev) before Laravel commands..."
+  composer install --no-interaction --prefer-dist --no-scripts
+fi
+
 # Laravel key生成（すでにあるならスキップ）
 if [ ! -f .env ]; then
   cp .env.example .env
@@ -19,12 +25,6 @@ until nc -z "$DB_HOST" "${DB_PORT:-3306}"; do
   sleep 1
 done
 echo "MySQL is up - continuing"
-
-# vendor が無ければインストール（1 回目だけ）
-if [ ! -d vendor ]; then
-  echo "Running composer install (dev)..."
-  composer install --no-interaction --prefer-dist --no-scripts
-fi
 
 php artisan config:clear
 
